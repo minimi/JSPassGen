@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <title>Password Generator</title>
+    <meta charset="utf-8"/>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        pre {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+<h3>Password Generator</h3>
+
+<div>
+    <div>
+        Lowercase Letters: <input id="little" type="checkbox" checked/>
+    </div>
+    <div>
+        Capital Letters: <input id="large" type="checkbox" checked/>
+    </div>
+    <div>
+        Numbers: <input id="numbers" name="numbers" type="checkbox" checked/>
+    </div>
+    <div>
+        Special symbols: <input id="special" name="special" type="checkbox" checked/>
+    </div>
+    <div>
+        Password length: <input id="length" type="number" value="10" min="1" max="99"/>
+    </div>
+    <div>
+        Quantity: <input id="quantity" type="number" value="10" min="1" max="99"/>
+    </div>
+    <div>
+        <input type="button" value="Generate" onclick="generatePassword()"/>
+    </div>
+</div>
+
+<div>Доступные пароли:</div>
+<div id="password"></div>
+
+<script>
+
+    var lowercase = "abcdefghijklmnopqrstuvwxyz";
+    var capital = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var numbers = "1234567890";
+    var special = '!@#$%^&*()[]{}<>\\/"№;:?~`.,\'';
+
+    var generatePassword = function () {
+        var symbols = ''
+        if (document.getElementById('special').checked) symbols += special;
+        if (document.getElementById('numbers').checked) symbols += numbers;
+        if (document.getElementById('large').checked) symbols += capital;
+        if (document.getElementById('little').checked) symbols += lowercase;
+
+        var amount = document.getElementById('quantity').value;
+        var length = document.getElementById('length').value;
+        var passwords = '';
+        for (var i = 0; i < amount; i++) {
+            var password = '';
+            for (var j = 0; j < length; j++) {
+                var index = Math.floor(Math.random() * symbols.length);
+                password += symbols[index];
+            }
+            passwords += password + '\n';
+        }
+        passwords = passwords.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+        document.getElementById('password').innerHTML = '<pre>' + passwords + '</pre>';
+    };
+</script>
+</body>
+</html>
