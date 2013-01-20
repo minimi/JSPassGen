@@ -12,6 +12,29 @@
 
         pre {
             font-family: monospace;
+            font-size: 18px;
+            margin: 40px;
+        }
+
+        h3 {
+            margin: 20px 20px;
+            font-size: 26px;
+            text-decoration: underline;
+        }
+
+        div {
+            width: 200px;
+            margin: 40px;
+        }
+
+        input {
+            float: right;
+        }
+
+        #generate {
+            float: none;
+            width: 200px;
+            height: 40px;
         }
     </style>
 </head>
@@ -19,30 +42,28 @@
 <h3>Password Generator</h3>
 
 <div>
-    <div>
-        Lowercase Letters: <input id="little" type="checkbox" checked/>
-    </div>
-    <div>
-        Capital Letters: <input id="large" type="checkbox" checked/>
-    </div>
-    <div>
-        Numbers: <input id="numbers" name="numbers" type="checkbox" checked/>
-    </div>
-    <div>
-        Special symbols: <input id="special" name="special" type="checkbox" checked/>
-    </div>
-    <div>
-        Password length: <input id="length" type="number" value="10" min="1" max="99"/>
-    </div>
-    <div>
-        Quantity: <input id="quantity" type="number" value="10" min="1" max="99"/>
-    </div>
-    <div>
-        <input type="button" value="Generate" onclick="generatePassword()"/>
-    </div>
+    Lowercase Letters: <input id="little" type="checkbox" checked/>
+</div>
+<div>
+    Capital Letters: <input id="large" type="checkbox" checked/>
+</div>
+<div>
+    Numbers: <input id="numbers" name="numbers" type="checkbox" checked/>
+</div>
+<div>
+    Special symbols: <input id="special" name="special" type="checkbox" checked/>
+</div>
+<div>
+    Password length: <input id="length" type="number" value="10" min="1" max="99"/>
+</div>
+<div>
+    Quantity: <input id="quantity" type="number" value="10" min="1" max="99"/>
+</div>
+<div>
+    <input id="generate" type="button" value="Generate" onclick="generatePassword()"/>
 </div>
 
-<div>Доступные пароли:</div>
+
 <div id="password"></div>
 
 <script>
